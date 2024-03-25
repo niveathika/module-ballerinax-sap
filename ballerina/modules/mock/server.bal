@@ -70,6 +70,14 @@ service /API_SALES_ORDER_SRV on new http:Listener(9093) {
             }
         } else if self.postCount == 1 {
             if cookies.length() == 1 && cookies[0].name == "session" && cookies[0].value == "session1" {
+                res.statusCode = 200;
+            } else {
+                res.statusCode = 403;
+                res.addHeader("X-CSRF-TOKEN", "Required");
+                res.addCookie(new http:Cookie("session", "session1"));
+            }
+        } else if self.postCount == 2 {
+            if cookies.length() == 1 && cookies[0].name == "session" && cookies[0].value == "session1" {
                 res.statusCode = 403;
                 res.addHeader("X-CSRF-TOKEN", "Required");
                 res.addCookie(new http:Cookie("session", "session2"));

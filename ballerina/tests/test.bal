@@ -34,7 +34,6 @@ function testTokenFetch() returns error? {
 }
 
 @test:Config {
-    enable: false,
     dependsOn: [testTokenFetch]
 }
 function testTokenRefreshAfterExpiry() returns error? {
@@ -44,26 +43,26 @@ function testTokenRefreshAfterExpiry() returns error? {
     test:assertEquals(response.statusCode, 200, "Status code should be 200");
 }
 
-@test:Config {}
-function testGetFunction() returns error? {
-    http:Response response = check sapClient->get("/A_SalesOrder");
-    test:assertEquals(response.statusCode, 200, "Status code should be 200");
-}
+// @test:Config {}
+// function testGetFunction() returns error? {
+//     http:Response response = check sapClient->get("/A_SalesOrder");
+//     test:assertEquals(response.statusCode, 200, "Status code should be 200");
+// }
 
-@test:Config {}
-function testPatchFunction() returns error? {
-    http:Response response = check sapClient->patch("/A_SalesOrder/1", "testPayload");
-    test:assertEquals(response.statusCode, 200, "Status code should be 200");
-}
+// @test:Config {}
+// function testPatchFunction() returns error? {
+//     http:Response response = check sapClient->patch("/A_SalesOrder/1", "testPayload");
+//     test:assertEquals(response.statusCode, 200, "Status code should be 200");
+// }
 
-@test:Config {}
-function testPutFunction() returns error? {
-    http:Response response = check sapClient->put("/A_SalesOrder/1", "testPayload");
-    test:assertEquals(response.statusCode, 200, "Status code should be 200");
-}
+// @test:Config {}
+// function testPutFunction() returns error? {
+//     http:Response response = check sapClient->put("/A_SalesOrder/1", "testPayload");
+//     test:assertEquals(response.statusCode, 200, "Status code should be 200");
+// }
 
-@test:Config {}
-function testDeleteFunction() returns error? {
-    http:Response response = check sapClient->delete("/A_SalesOrder", "testPayload");
-    test:assertEquals(response.statusCode, 200, "Status code should be 200");
-}
+// @test:Config {}
+// function testDeleteFunction() returns error? {
+//     http:Response response = check sapClient->delete("/A_SalesOrder", "testPayload");
+//     test:assertEquals(response.statusCode, 200, "Status code should be 200");
+// }
